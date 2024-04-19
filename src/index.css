@@ -72,3 +72,31 @@ ul {
   flex-direction: column;
   gap: 5px;
 }
+
+.form {
+  border: 1px solid #ccc;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input,
+textarea {
+  width: 350px;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 50px;
+}

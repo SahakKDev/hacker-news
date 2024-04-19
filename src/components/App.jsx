@@ -1,9 +1,10 @@
-import LinkList from "./Link/LinkList";
+import CreateLink from "./Link/CreateLink";
+// import LinkList from "./Link/LinkList";
 
 function App() {
   return (
     <div className="container">
-      <LinkList />
+      <CreateLink />
     </div>
   );
 }
