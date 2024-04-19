@@ -68,13 +68,15 @@ body {
 
 ul {
   list-style-type: none;
+}
+
+.link-list {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
 .form {
-  border: 1px solid #ccc;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -99,4 +101,41 @@ textarea {
 
 textarea {
   height: 50px;
+}
+
+.header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+.nav-list {
+  display: flex;
+  gap: 10px;
+}
+
+a {
+  color: #000;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:link:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+.logout-btn {
+  margin-left: auto;
 }

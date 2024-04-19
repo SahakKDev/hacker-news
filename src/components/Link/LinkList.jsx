@@ -26,10 +26,8 @@ export default function LinkList() {
     return <Error>Something went wrong.</Error>;
   }
 
-  console.log("data", data);
-
   return (
-    <ul>
+    <ul className="link-list">
       {data.feed.links.map((link, index) => (
         <Link key={link.id} link={link} index={index + 1} />
       ))}
