@@ -6,7 +6,9 @@ import {
   HttpLink,
   ApolloProvider,
 } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
+import { isAuthenticated } from "./helpers.js";
 import App from "./components/App.jsx";
 import "./index.css";
 
@@ -14,8 +16,19 @@ const link = new HttpLink({
   uri: "http://localhost:4000",
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = isAuthenticated();
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
 const client = new ApolloClient({
-  link,
+  link: authLink.concat(link),
   cache: new InMemoryCache(),
 });
 

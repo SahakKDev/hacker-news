@@ -1,14 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Navigation from "./Navigation";
-import Logout from "./Logout";
 
 export default function Header() {
   return (
     <>
       <header className="header">
-        <span className="logo">HackerNews</span>
+        <Link to="/new" className="logo">
+          HackerNews
+        </Link>
         <Navigation />
-        <Logout />
       </header>
       <Outlet />
     </>

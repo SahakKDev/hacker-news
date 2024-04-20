@@ -1,3 +1,3 @@
 export default function Error({ children }) {
-  return <div className="center">{children}</div>;
+  return <div className="center error">{children}</div>;
 }

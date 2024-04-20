@@ -8,10 +8,9 @@
 
 body {
   background-color: #ddd;
+  font-family: sans-serif;
 }
-/* display: flex;
-  align-items: center;
-  justify-content: center; */
+
 .container {
   width: 920px;
   max-width: 80%;
@@ -66,10 +65,6 @@ body {
   text-align: center;
 }
 
-ul {
-  list-style-type: none;
-}
-
 .link-list {
   display: flex;
   flex-direction: column;
@@ -90,15 +85,6 @@ ul {
   align-items: flex-start;
 }
 
-input,
-textarea {
-  width: 350px;
-  padding: 5px;
-  outline: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 textarea {
   height: 50px;
 }
@@ -109,18 +95,91 @@ textarea {
   align-items: center;
   gap: 15px;
   padding: 0 20px;
+  background-color: #ff5000;
+  margin-bottom: 12px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .logo {
   font-size: 20px;
   font-weight: bold;
-  font-family: sans-serif;
   text-transform: uppercase;
+}
+
+.logo:hover {
+  text-decoration: none !important;
+}
+
+.nav {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
 
 .nav-list {
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+
+.auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.error {
+  color: tomato;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.link .row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.icon {
+  width: 16px;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+/* UTILS */
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mb-1 {
+  margin-bottom: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 12px;
+}
+
+.ml-1 {
+  margin-left: 16px;
+}
+
+/* GENERAL */
+
+ul {
+  list-style-type: none;
+}
+
+input,
+textarea {
+  width: 350px;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 a {
@@ -134,8 +193,4 @@ a:link {
 a:link:hover {
   text-decoration: underline;
   color: #000;
-}
-
-.logout-btn {
-  margin-left: auto;
 }

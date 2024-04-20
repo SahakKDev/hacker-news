@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import Input from "../Input";
 
 const CREATE_LINK = gql`
   mutation CreateLink($url: String!, $description: String!) {
@@ -24,6 +25,13 @@ export default function CreateLink() {
     onCompleted: () => navigate("/"),
   });
 
+  const onInputChange = (field, value) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      [field]: value,
+    }));
+  };
+
   return (
     <form
       className="form"
@@ -33,32 +41,24 @@ export default function CreateLink() {
       }}
     >
       <div className="form-item">
-        <label htmlFor="url">Url</label>
-        <input
+        <Input
+          label="Url"
+          tagName="input"
+          type="text"
           id="url"
           name="url"
-          type="text"
-          onChange={(e) =>
-            setFormState((prev) => ({
-              ...prev,
-              url: e.target.value,
-            }))
-          }
+          onChange={(e) => onInputChange("url", e.target.value)}
         />
       </div>
 
       <div className="form-item">
-        <label htmlFor="description">Description</label>
-        <textarea
+        <Input
+          label="Description"
+          tagName="textarea"
           id="description"
           name="description"
-          onChange={(e) =>
-            setFormState((prev) => ({
-              ...prev,
-              description: e.target.value,
-            }))
-          }
-        ></textarea>
+          onChange={(e) => onInputChange("description", e.target.value)}
+        />
       </div>
 
       <button type="submit" className="button">
