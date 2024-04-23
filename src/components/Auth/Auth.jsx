@@ -90,7 +90,6 @@ export default function Auth() {
           {!loginPage && (
             <div className="mb-1">
               <Input
-                tagName="input"
                 type="text"
                 placeholder="Your name"
                 onChange={(e) => onInputChange("name", e.target.value)}
@@ -100,7 +99,6 @@ export default function Auth() {
 
           <div className="mb-1">
             <Input
-              tagName="input"
               type="email"
               placeholder="Your email address"
               onChange={(e) => onInputChange("email", e.target.value)}
@@ -109,7 +107,6 @@ export default function Auth() {
 
           <div className="mb-2">
             <Input
-              tagName="input"
               type="password"
               placeholder="Your password"
               onChange={(e) => onInputChange("password", e.target.value)}

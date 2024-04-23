@@ -3,14 +3,24 @@ import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import Link from "./Link";
 
-const FEED_QUERY = gql`
+export const FEED_QUERY = gql`
   {
     feed {
+      id
       links {
         id
         description
         url
+        createdAt
+        postedBy {
+          id
+          name
+        }
+        votes {
+          id
+        }
       }
+      count
     }
   }
 `;

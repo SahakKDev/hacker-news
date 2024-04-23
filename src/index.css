@@ -39,6 +39,14 @@ body {
   }
 }
 
+.btn-icon {
+  width: 20px;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
 .loader {
   display: block;
   margin: auto;
@@ -141,12 +149,10 @@ textarea {
   gap: 3px;
 }
 
-.icon {
-  width: 16px;
-}
-
-.icon:hover {
-  cursor: pointer;
+.search {
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 /* UTILS */
@@ -165,6 +171,10 @@ textarea {
 
 .ml-1 {
   margin-left: 16px;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 /* GENERAL */

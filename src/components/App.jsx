@@ -8,6 +8,7 @@ import CreateLink from "./Link/CreateLink";
 import LinkList from "./Link/LinkList";
 import Header from "./Header/Header";
 import Auth from "./Auth/Auth";
+import Search from "./Link/Search";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,10 @@ const router = createBrowserRouter([
         path: "new",
         element: <LinkList />,
       },
-
+      {
+        path: "search",
+        element: <Search />,
+      },
       {
         path: "submit",
         element: <CreateLink />,

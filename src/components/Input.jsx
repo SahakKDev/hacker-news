@@ -1,5 +1,5 @@
 export default function Input({ tagName, label, id, ...props }) {
-  const TagName = tagName;
+  const TagName = tagName || "input";
 
   return (
     <>
