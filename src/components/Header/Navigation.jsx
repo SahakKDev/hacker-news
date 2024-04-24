@@ -19,7 +19,11 @@ export default function Navigation() {
     <nav className="nav">
       <ul className="nav-list">
         <li className="nav-list-item">
-          <Link to="/new">New</Link>
+          <Link to="/">New</Link>
+        </li>
+        <span>|</span>
+        <li className="nav-list-item">
+          <Link to="/top">Top</Link>
         </li>
         <span>|</span>
         <li className="nav-list-item">

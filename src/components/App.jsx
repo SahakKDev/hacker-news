@@ -15,26 +15,12 @@ const router = createBrowserRouter([
     path: "/",
     element: <Header />,
     children: [
-      {
-        index: true,
-        element: <Navigate to="/new" replace={true} />,
-      },
-      {
-        path: "new",
-        element: <LinkList />,
-      },
-      {
-        path: "search",
-        element: <Search />,
-      },
-      {
-        path: "submit",
-        element: <CreateLink />,
-      },
-      {
-        path: "auth",
-        element: <Auth />,
-      },
+      { index: true, element: <Navigate to="/new/1" replace={true} /> },
+      { path: "new/:page", element: <LinkList /> },
+      { path: "top", element: <LinkList /> },
+      { path: "search", element: <Search /> },
+      { path: "submit", element: <CreateLink /> },
+      { path: "auth", element: <Auth /> },
     ],
   },
 ]);

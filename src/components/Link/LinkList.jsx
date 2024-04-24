@@ -1,7 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import Link from "./Link";
+import { LINKS_PER_PAGE } from "../../constants";
+import { getLinksToRender, getQueryVariables } from "../../helpers";
 
 const NEW_LINKS_SUBSCRIPTION = gql`
   subscription {
@@ -43,8 +46,8 @@ const NEW_VOTES_SUBSCRIPTION = gql`
 `;
 
 export const FEED_QUERY = gql`
-  {
-    feed {
+  query FeedQuery($take: Int, $skip: Int, $orderBy: LinkOrderByInput) {
+    feed(take: $take, skip: $skip, orderBy: $orderBy) {
       id
       links {
         id
@@ -65,7 +68,17 @@ export const FEED_QUERY = gql`
 `;
 
 export default function LinkList() {
-  const { data, error, loading, subscribeToMore } = useQuery(FEED_QUERY);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isNewPage = location.pathname.includes("new");
+  const pageIndexParams = location.pathname.split("/");
+  const page = parseInt(pageIndexParams[pageIndexParams.length - 1]);
+  const pageIndex = page ? (page - 1) * LINKS_PER_PAGE : 0;
+
+  const { data, error, loading, subscribeToMore } = useQuery(FEED_QUERY, {
+    variables: getQueryVariables(isNewPage, page),
+    fetchPolicy: "network-only",
+  });
 
   subscribeToMore({
     document: NEW_LINKS_SUBSCRIPTION,
@@ -103,9 +116,35 @@ export default function LinkList() {
 
   return (
     <ul className="link-list">
-      {data.feed.links.map((link, index) => (
-        <Link key={link.id} link={link} index={index + 1} />
-      ))}
+      {getLinksToRender(isNewPage, data).map((link, index) => {
+        return <Link key={link.id} link={link} index={index + pageIndex} />;
+      })}
+
+      {isNewPage && (
+        <div>
+          <button
+            className="button"
+            onClick={() => {
+              if (page > 1) {
+                navigate(`/new/${page - 1}`);
+              }
+            }}
+          >
+            Previous
+          </button>
+          <button
+            className="button"
+            onClick={() => {
+              if (page <= data.feed.count / LINKS_PER_PAGE) {
+                const nextPage = page + 1;
+                navigate(`/new/${nextPage}`);
+              }
+            }}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </ul>
   );
 }

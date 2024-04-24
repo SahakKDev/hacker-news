@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        <Link to="/new" className="logo">
+        <Link to="/" className="logo">
           HackerNews
         </Link>
         <Navigation />

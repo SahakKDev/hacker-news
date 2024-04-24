@@ -39,7 +39,7 @@ export default function Link({ link, index }) {
   return (
     <li className="link mb-1">
       <div className="row">
-        <span>{index}.</span>
+        <span>{index + 1}.</span>
         {isLoggedIn && (
           <button className="btn-icon">
             <ArrowUpIcon onClick={vote} />

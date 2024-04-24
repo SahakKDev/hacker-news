@@ -63,9 +63,11 @@ export default function Search() {
       {loading ? (
         <Loader />
       ) : !error ? (
-        data?.feed?.links.map((link, index) => (
-          <Link key={link.id} link={link} index={index} />
-        ))
+        <ul>
+          {data?.feed?.links.map((link, index) => (
+            <Link key={link.id} link={link} index={index} />
+          ))}
+        </ul>
       ) : (
         <Error>{error?.message}</Error>
       )}
