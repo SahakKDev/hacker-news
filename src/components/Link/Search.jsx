@@ -2,6 +2,8 @@ import { useState } from "react";
 import Input from "../Input";
 import { gql, useLazyQuery } from "@apollo/client";
 import Link from "./Link";
+import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
 
 const FILTERED_QUERY = gql`
   query FilteredQuery($filter: String) {
@@ -29,11 +31,7 @@ export default function Search() {
   const [search, setSearch] = useState("");
   const [handleSearch, { data, loading, error }] = useLazyQuery(
     FILTERED_QUERY,
-    {
-      variables: {
-        filter: search,
-      },
-    }
+    { fetchPolicy: "network-only" }
   );
 
   function handleChange(event) {
@@ -49,13 +47,28 @@ export default function Search() {
           value={search}
           onChange={handleChange}
         />
-        <button className="button" onClick={handleSearch}>
+        <button
+          className="button"
+          onClick={() =>
+            handleSearch({
+              variables: {
+                filter: search,
+              },
+            })
+          }
+        >
           OK
         </button>
       </div>
-      {data?.feed?.links.map((link, index) => (
-        <Link key={link.id} link={link} index={index} />
-      ))}
+      {loading ? (
+        <Loader />
+      ) : !error ? (
+        data?.feed?.links.map((link, index) => (
+          <Link key={link.id} link={link} index={index} />
+        ))
+      ) : (
+        <Error>{error?.message}</Error>
+      )}
     </>
   );
 }

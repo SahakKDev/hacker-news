@@ -10,7 +10,9 @@ export default function Header() {
         </Link>
         <Navigation />
       </header>
-      <Outlet />
+      <div className="container">
+        <Outlet />
+      </div>
     </>
   );
 }
